@@ -7,5 +7,7 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="signup">Sign up</string>
+    <string name="signup_done">Sign up is succeeded!</string>
+    <string name="signup_failed">Failed to sign up</string>
 
 </resources>

@@ -17,4 +17,18 @@ public class MainActivity extends ActionBarActivity {
             FragmentUtils.toNextFragment(getSupportFragmentManager(), R.id.container, SignupFragment.newInstance(), false);
         }
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        MyApplication context = (MyApplication) getApplicationContext();
+        context.getQueue().start();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        MyApplication context = (MyApplication) getApplicationContext();
+        context.getQueue().stop();
+    }
 }
