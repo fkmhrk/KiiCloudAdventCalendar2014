@@ -24,7 +24,17 @@ android {
     }
 }
 
+repositories {
+    maven {
+        url "https://raw.githubusercontent.com/fkmhrk/kiilib-android-volley/master/m2repository"
+    }
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:21.0.2'
+
+    compile 'jp.fkmsoft.libs:KiiLib-Android-Volley:2.1.0'
+
+    compile 'com.jakewharton:butterknife:6.0.0'
 }

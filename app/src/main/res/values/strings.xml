@@ -4,5 +4,10 @@
     <string name="app_name">KiiCloudAdvent2014</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="signup">Sign up</string>
+    <string name="signup_done">Sign up is succeeded!</string>
+    <string name="signup_failed">Failed to sign up</string>
 
 </resources>
