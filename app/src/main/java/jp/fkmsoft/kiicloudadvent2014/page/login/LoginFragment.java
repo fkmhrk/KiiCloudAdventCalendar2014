@@ -58,7 +58,7 @@ public class LoginFragment extends Fragment {
     }
 
     @OnClick(R.id.button_login)
-    void signupClicked(View v) {
+    void loginClicked(View v) {
         String username = mUsernameEdit.getText().toString();
         String password = mPasswordEdit.getText().toString();
 
