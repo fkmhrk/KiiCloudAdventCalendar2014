@@ -9,5 +9,8 @@
     <string name="signup">Sign up</string>
     <string name="signup_done">Sign up is succeeded!</string>
     <string name="signup_failed">Failed to sign up</string>
+    <string name="login">Log in</string>
+    <string name="login_done">Login is succeeded</string>
+    <string name="login_failed">Failed to log in</string>
 
 </resources>

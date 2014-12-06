@@ -3,7 +3,7 @@ package jp.fkmsoft.kiicloudadvent2014;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 
-import jp.fkmsoft.kiicloudadvent2014.page.signup.SignupFragment;
+import jp.fkmsoft.kiicloudadvent2014.page.login.LoginFragment;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -14,7 +14,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         if (savedInstanceState == null) {
-            FragmentUtils.toNextFragment(getSupportFragmentManager(), R.id.container, SignupFragment.newInstance(), false);
+            FragmentUtils.toNextFragment(getSupportFragmentManager(), R.id.container, LoginFragment.newInstance(), false);
         }
     }
 
