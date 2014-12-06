@@ -13,8 +13,10 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 import jp.fkmsoft.kiicloudadvent2014.Constants;
+import jp.fkmsoft.kiicloudadvent2014.FragmentUtils;
 import jp.fkmsoft.kiicloudadvent2014.MyApplication;
 import jp.fkmsoft.kiicloudadvent2014.R;
+import jp.fkmsoft.kiicloudadvent2014.page.main.MainFragment;
 import jp.fkmsoft.libs.kiilib.apis.AppAPI;
 import jp.fkmsoft.libs.kiilib.entities.KiiUser;
 import jp.fkmsoft.libs.kiilib.volley.KiiVolleyAPI;
@@ -66,6 +68,7 @@ public class LoginFragment extends Fragment {
             @Override
             public void onSuccess(String token, KiiUser kiiUser) {
                 Toast.makeText(getActivity(), R.string.login_done, Toast.LENGTH_SHORT).show();
+                FragmentUtils.toNextFragment(getFragmentManager(), R.id.container, MainFragment.newInstance(token), false);
             }
 
             @Override
