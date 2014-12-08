@@ -60,6 +60,13 @@ public class SignupFragment extends Fragment {
         return root;
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        ButterKnife.reset(this);
+    }
+
     @OnClick(R.id.button_signup)
     void signupClicked(View v) {
         String username = mUsernameEdit.getText().toString();

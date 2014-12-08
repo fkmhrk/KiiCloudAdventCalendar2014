@@ -1,5 +1,7 @@
 package jp.fkmsoft.kiicloudadvent2014.page.login;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -59,6 +61,13 @@ public class LoginFragment extends Fragment {
         return root;
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        ButterKnife.reset(this);
+    }
+
     @OnClick(R.id.button_login)
     void loginClicked(View v) {
         String username = mUsernameEdit.getText().toString();
@@ -68,6 +77,11 @@ public class LoginFragment extends Fragment {
             @Override
             public void onSuccess(String token, KiiUser kiiUser) {
                 Toast.makeText(getActivity(), R.string.login_done, Toast.LENGTH_SHORT).show();
+
+                // Save access token
+                SharedPreferences pref = getActivity().getSharedPreferences(Constants.PREF_NAME, Context.MODE_PRIVATE);
+                pref.edit().putString(Constants.PREF_KEY_TOKEN, token).apply();
+
                 FragmentUtils.toNextFragment(getFragmentManager(), R.id.container, MainFragment.newInstance(token), false);
             }
 
