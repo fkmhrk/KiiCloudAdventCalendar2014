@@ -1,9 +1,12 @@
 package jp.fkmsoft.kiicloudadvent2014;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 
-import jp.fkmsoft.kiicloudadvent2014.page.signup.SignupFragment;
+import jp.fkmsoft.kiicloudadvent2014.page.login.LoginFragment;
+import jp.fkmsoft.kiicloudadvent2014.page.main.MainFragment;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -14,7 +17,14 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         if (savedInstanceState == null) {
-            FragmentUtils.toNextFragment(getSupportFragmentManager(), R.id.container, SignupFragment.newInstance(), false);
+            // login check
+            SharedPreferences pref = getSharedPreferences(Constants.PREF_NAME, Context.MODE_PRIVATE);
+            String token = pref.getString(Constants.PREF_KEY_TOKEN, null);
+            if (token == null) {
+                FragmentUtils.toNextFragment(getSupportFragmentManager(), R.id.container, LoginFragment.newInstance(), false);
+            } else {
+                FragmentUtils.toNextFragment(getSupportFragmentManager(), R.id.container, MainFragment.newInstance(token), false);
+            }
         }
     }
 

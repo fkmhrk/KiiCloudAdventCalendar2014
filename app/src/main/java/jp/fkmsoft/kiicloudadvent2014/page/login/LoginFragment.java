@@ -1,5 +1,7 @@
-package jp.fkmsoft.kiicloudadvent2014.page.signup;
+package jp.fkmsoft.kiicloudadvent2014.page.login;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,15 +11,14 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 import jp.fkmsoft.kiicloudadvent2014.Constants;
+import jp.fkmsoft.kiicloudadvent2014.FragmentUtils;
 import jp.fkmsoft.kiicloudadvent2014.MyApplication;
 import jp.fkmsoft.kiicloudadvent2014.R;
+import jp.fkmsoft.kiicloudadvent2014.page.main.MainFragment;
 import jp.fkmsoft.libs.kiilib.apis.AppAPI;
 import jp.fkmsoft.libs.kiilib.entities.KiiUser;
 import jp.fkmsoft.libs.kiilib.volley.KiiVolleyAPI;
@@ -25,9 +26,9 @@ import jp.fkmsoft.libs.kiilib.volley.KiiVolleyAPI;
 /**
  * Fragment for Login page
  */
-public class SignupFragment extends Fragment {
-    public static SignupFragment newInstance() {
-        SignupFragment fragment = new SignupFragment();
+public class LoginFragment extends Fragment {
+    public static LoginFragment newInstance() {
+        LoginFragment fragment = new LoginFragment();
 
         Bundle args = new Bundle();
         fragment.setArguments(args);
@@ -53,7 +54,7 @@ public class SignupFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_signup, container, false);
+        View root = inflater.inflate(R.layout.fragment_login, container, false);
 
         ButterKnife.inject(this, root);
 
@@ -67,27 +68,26 @@ public class SignupFragment extends Fragment {
         ButterKnife.reset(this);
     }
 
-    @OnClick(R.id.button_signup)
-    void signupClicked(View v) {
+    @OnClick(R.id.button_login)
+    void loginClicked(View v) {
         String username = mUsernameEdit.getText().toString();
         String password = mPasswordEdit.getText().toString();
 
-        JSONObject info = new JSONObject();
-        try {
-            info.put("loginName", username);
-        } catch (JSONException e) {
-            // nop
-        }
-
-        mKiiAPI.signup(info, password, new AppAPI.SignupCallback<KiiUser>() {
+        mKiiAPI.loginAsUser(username, password, new AppAPI.LoginCallback<KiiUser>() {
             @Override
-            public void onSuccess(KiiUser kiiUser) {
-                Toast.makeText(getActivity(), R.string.signup_done, Toast.LENGTH_SHORT).show();
+            public void onSuccess(String token, KiiUser kiiUser) {
+                Toast.makeText(getActivity(), R.string.login_done, Toast.LENGTH_SHORT).show();
+
+                // Save access token
+                SharedPreferences pref = getActivity().getSharedPreferences(Constants.PREF_NAME, Context.MODE_PRIVATE);
+                pref.edit().putString(Constants.PREF_KEY_TOKEN, token).apply();
+
+                FragmentUtils.toNextFragment(getFragmentManager(), R.id.container, MainFragment.newInstance(token), false);
             }
 
             @Override
             public void onError(Exception e) {
-                Toast.makeText(getActivity(), R.string.signup_failed, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), R.string.login_failed, Toast.LENGTH_SHORT).show();
             }
         });
     }
