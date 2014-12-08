@@ -8,22 +8,41 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import jp.fkmsoft.kiicloudadvent2014.FragmentUtils;
 import jp.fkmsoft.kiicloudadvent2014.R;
+import jp.fkmsoft.kiicloudadvent2014.page.userscope.UserScopeFragment;
+import jp.fkmsoft.libs.kiilib.entities.KiiUser;
 
 /**
  * Fragment for main page
  */
 public class MainFragment extends Fragment {
     private static final String ARGS_TOKEN = "token";
+    private static final String ARGS_USER = "user";
 
-    public static MainFragment newInstance(String token) {
+    public static MainFragment newInstance(String token, KiiUser user) {
         MainFragment fragment = new MainFragment();
 
         Bundle args = new Bundle();
         args.putString(ARGS_TOKEN, token);
+        args.putParcelable(ARGS_USER, user);
         fragment.setArguments(args);
 
         return fragment;
+    }
+
+    // arguments
+    private String mToken;
+    private KiiUser mUser;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        Bundle args = getArguments();
+        mToken = args.getString(ARGS_TOKEN);
+        mUser = args.getParcelable(ARGS_USER);
     }
 
     @Override
@@ -40,5 +59,10 @@ public class MainFragment extends Fragment {
         super.onDestroyView();
 
         ButterKnife.reset(this);
+    }
+
+    @OnClick(R.id.button_user_scope)
+    void userScopeClicked(View v) {
+        FragmentUtils.toNextFragment(getFragmentManager(), R.id.container, UserScopeFragment.newInstance(mToken, mUser), true);
     }
 }

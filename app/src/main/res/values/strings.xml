@@ -12,5 +12,9 @@
     <string name="login">Log in</string>
     <string name="login_done">Login is succeeded</string>
     <string name="login_failed">Failed to log in</string>
+    <string name="main_user_scope">User scope</string>
+    <string name="user_scope_err_load">Failed to load user\'s memo</string>
+    <string name="action_add">Add</string>
+    <string name="user_scope_err_create">Failed to create memo</string>
 
 </resources>

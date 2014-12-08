@@ -82,7 +82,7 @@ public class LoginFragment extends Fragment {
                 SharedPreferences pref = getActivity().getSharedPreferences(Constants.PREF_NAME, Context.MODE_PRIVATE);
                 pref.edit().putString(Constants.PREF_KEY_TOKEN, token).apply();
 
-                FragmentUtils.toNextFragment(getFragmentManager(), R.id.container, MainFragment.newInstance(token), false);
+                FragmentUtils.toNextFragment(getFragmentManager(), R.id.container, MainFragment.newInstance(token, kiiUser), false);
             }
 
             @Override
