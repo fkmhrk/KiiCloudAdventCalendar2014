@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 
 import jp.fkmsoft.kiicloudadvent2014.page.login.LoginFragment;
 import jp.fkmsoft.kiicloudadvent2014.page.main.MainFragment;
+import jp.fkmsoft.libs.kiilib.entities.KiiUser;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -23,7 +24,7 @@ public class MainActivity extends ActionBarActivity {
             if (token == null) {
                 FragmentUtils.toNextFragment(getSupportFragmentManager(), R.id.container, LoginFragment.newInstance(), false);
             } else {
-                FragmentUtils.toNextFragment(getSupportFragmentManager(), R.id.container, MainFragment.newInstance(token), false);
+                FragmentUtils.toNextFragment(getSupportFragmentManager(), R.id.container, MainFragment.newInstance(token, new KiiUser("me")), false);
             }
         }
     }
