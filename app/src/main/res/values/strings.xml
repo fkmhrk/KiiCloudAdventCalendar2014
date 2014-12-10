@@ -16,5 +16,10 @@
     <string name="user_scope_err_load">Failed to load user\'s memo</string>
     <string name="action_add">Add</string>
     <string name="user_scope_err_create">Failed to create memo</string>
+    <string name="main_group">Group</string>
+    <string name="group_create">Create group</string>
+    <string name="group_name">Group name</string>
+    <string name="group_created">Group is created id=%1$s</string>
+    <string name="group_create_failed">Failed to create group</string>
 
 </resources>

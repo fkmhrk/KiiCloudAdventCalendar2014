@@ -80,7 +80,9 @@ public class LoginFragment extends Fragment {
 
                 // Save access token
                 SharedPreferences pref = getActivity().getSharedPreferences(Constants.PREF_NAME, Context.MODE_PRIVATE);
-                pref.edit().putString(Constants.PREF_KEY_TOKEN, token).apply();
+                pref.edit().putString(Constants.PREF_KEY_TOKEN, token)
+                        .putString(Constants.PREF_KEY_USER_ID, kiiUser.getId())
+                        .apply();
 
                 FragmentUtils.toNextFragment(getFragmentManager(), R.id.container, MainFragment.newInstance(token, kiiUser), false);
             }
