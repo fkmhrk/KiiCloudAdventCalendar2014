@@ -21,10 +21,11 @@ public class MainActivity extends ActionBarActivity {
             // login check
             SharedPreferences pref = getSharedPreferences(Constants.PREF_NAME, Context.MODE_PRIVATE);
             String token = pref.getString(Constants.PREF_KEY_TOKEN, null);
-            if (token == null) {
+            String userId = pref.getString(Constants.PREF_KEY_USER_ID, null);
+            if (token == null || userId == null) {
                 FragmentUtils.toNextFragment(getSupportFragmentManager(), R.id.container, LoginFragment.newInstance(), false);
             } else {
-                FragmentUtils.toNextFragment(getSupportFragmentManager(), R.id.container, MainFragment.newInstance(token, new KiiUser("me")), false);
+                FragmentUtils.toNextFragment(getSupportFragmentManager(), R.id.container, MainFragment.newInstance(token, new KiiUser(userId)), false);
             }
         }
     }

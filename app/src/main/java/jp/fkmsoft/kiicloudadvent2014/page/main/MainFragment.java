@@ -11,6 +11,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import jp.fkmsoft.kiicloudadvent2014.FragmentUtils;
 import jp.fkmsoft.kiicloudadvent2014.R;
+import jp.fkmsoft.kiicloudadvent2014.page.group.GroupFragment;
 import jp.fkmsoft.kiicloudadvent2014.page.userscope.UserScopeFragment;
 import jp.fkmsoft.libs.kiilib.entities.KiiUser;
 
@@ -61,8 +62,15 @@ public class MainFragment extends Fragment {
         ButterKnife.reset(this);
     }
 
+    // UI event
+
     @OnClick(R.id.button_user_scope)
     void userScopeClicked(View v) {
         FragmentUtils.toNextFragment(getFragmentManager(), R.id.container, UserScopeFragment.newInstance(mToken, mUser), true);
+    }
+
+    @OnClick(R.id.button_group)
+    void groupClicked() {
+        FragmentUtils.toNextFragment(getFragmentManager(), R.id.container, GroupFragment.newInstance(mToken, mUser), true);
     }
 }

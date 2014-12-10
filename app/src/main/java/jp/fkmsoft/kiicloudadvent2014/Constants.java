@@ -10,6 +10,8 @@ public class Constants {
 
     public static final String PREF_NAME = "info";
     public static final String PREF_KEY_TOKEN = "token";
+    public static final String PREF_KEY_USER_ID = "userID";
 
     public static final String BUCKET_NAME_MEMO = "memo";
+
 }

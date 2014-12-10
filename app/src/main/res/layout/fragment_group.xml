@@ -1,0 +1,35 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_horizontal_margin"
+    >
+
+    <TextView
+        android:id="@+id/text_label_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/main_group"/>
+    <TextView
+        android:id="@+id/text_label_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_label_1"
+        android:text="@string/group_name"/>
+    <Button
+        android:id="@+id/button_create_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_label_2"
+        android:layout_alignParentRight="true"
+        android:text="@string/group_create"/>
+    <EditText
+        android:id="@+id/edit_group_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button_create_group"
+        android:layout_toLeftOf="@+id/button_create_group"
+        android:inputType="text"/>
+</RelativeLayout>
