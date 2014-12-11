@@ -21,5 +21,10 @@
     <string name="group_name">Group name</string>
     <string name="group_created">Group is created id=%1$s</string>
     <string name="group_create_failed">Failed to create group</string>
+    <string name="main_find_user">Find user</string>
+    <string name="find_user_name">Username</string>
+    <string name="find_user">Find user</string>
+    <string name="find_user_not_found">User not found</string>
+    <string name="find_user_found">User found id=%1$s</string>
 
 </resources>

@@ -29,5 +29,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/button_user_scope"
         android:text="@string/main_group"/>
+    <Button
+        android:id="@+id/button_find_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_group"
+        android:text="@string/main_find_user"/>
 
 </RelativeLayout>
